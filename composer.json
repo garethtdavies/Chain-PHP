@@ -1,0 +1,24 @@
+{
+    "name": "cbix/chain",
+    "description": "PHP library for the Circle Bitcoin API",
+    "keywords": ["bitcoin"],
+    "minimum-stability": "dev",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Gareth Davies",
+            "email": "gareth@cbix.ca"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "4.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Cbix\\": "src/"
+        }
+    }
+}
