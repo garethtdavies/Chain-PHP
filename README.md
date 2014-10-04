@@ -3,7 +3,7 @@ ChainPHP
 
 This library provides a simple PHP interface to the [Chain Bitcoin API](https://chain.com/).
 
-All methods are supported including creating webhooks and events. You will need to [sign up to Chain]('https://chain.com/') for a free API Key and Secret as they are needed to authenticate requests.
+All methods are supported including creating webhooks and events. You will need to [sign up to Chain](https://chain.com/) for a free API Key and Secret as they are needed to authenticate requests.
 
 ### Installing via Composer
 
@@ -13,7 +13,7 @@ The recommended way to install the library is through [Composer](http://getcompo
 # Install Composer
 curl -sS https://getcomposer.org/installer | php
 
-# Add Spark as a dependency
+# Add Chain-PHP as a dependency
 php composer.phar require cbix/chain-php:dev-master
 ```
 
