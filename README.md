@@ -28,7 +28,7 @@ require 'vendor/autoload.php';
 You will need to provide your API Key ID and API Key Secret as provided by Chain to authenticate your requests. There is an optional third parameter, which if set to true will use the Bitcoin Testnet3 block chain.
 It defaults to using the Bitcoin Mainnet if not specified or set to false.
 
-    $chain = new Chain($key, $secret, false);
+    $chain = Chain::link($key, $secret, false);
 
 ### Address
 
@@ -90,11 +90,12 @@ and managed according to your application needs.
         echo $latest_block->block_id;
     } catch (ChainException $e) {
         //There was an error more information in $e->getMessage();
-        var_dump($e->getMessage);
+        var_dump($e->getMessage());
     }
 
 ### Unit Tests
 
 This library uses PHPUnit for unit testing. In order to run the unit tests, you'll first need
 to install the dependencies of the project using Composer: `php composer.phar install --dev`.
-You can then run the tests using `vendor/bin/phpunit`.
+You can then run the tests using `vendor/bin/phpunit`. The library comes with a set of mocked responses
+from the Chain API for running the unit tests.

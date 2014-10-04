@@ -10,6 +10,6 @@ class ChainException extends Exception
      */
     public function error()
     {
-        return json_decode($this->getMessage());
+        return $this->getMessage();
     }
 }
