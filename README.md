@@ -32,7 +32,7 @@ It defaults to using the Bitcoin Mainnet if not specified or set to false.
 
 ### Address
 
-Address methods return a [Bitcoin Address Object](https://chain.com/docs#bitcoin-address-transactions).
+Address methods return a [Bitcoin Address Object](https://chain.com/docs#bitcoin-address-transactions). Where the API accepts multiple addresses you should provide an array of addresses.
 
     $single_address = $chain->get_address('17x23dNjXJLzGMev6R63uyRhMWP1VHawKc');
     $multiple_addresses = $chain->get_address(['17x23dNjXJLzGMev6R63uyRhMWP1VHawKc', '1EX1E9n3bPA1zGKDV5iHY2MnM7n5tDfnfH']);
