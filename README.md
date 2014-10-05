@@ -1,6 +1,8 @@
 ChainPHP
 ========
 
+[![Build Status](https://travis-ci.org/Digital-Currency-Research/Chain-PHP.svg)](https://travis-ci.org/Digital-Currency-Research/Chain-PHP)
+
 This library provides a simple PHP interface to the [Chain Bitcoin API](https://chain.com/).
 
 [All methods](https://chain.com/docs) are supported including creating webhooks and events. You will need to [sign up to Chain](https://chain.com/) for a free API Key and Secret as they are needed to authenticate requests.
