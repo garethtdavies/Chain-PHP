@@ -1,0 +1,4 @@
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+
+[{"hash":"17x23dNjXJLzGMev6R63uyRhMWP1VHawKc","balance":5000000000,"received":5000000000,"sent":0,"unconfirmed_received":0,"unconfirmed_sent":0,"unconfirmed_balance":0},{"hash":"1EX1E9n3bPA1zGKDV5iHY2MnM7n5tDfnfH","balance":5000000000,"received":5000000000,"sent":0,"unconfirmed_received":0,"unconfirmed_sent":0,"unconfirmed_balance":0}]
