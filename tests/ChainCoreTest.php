@@ -221,4 +221,61 @@ class ChainCoreTest extends \Guzzle\Tests\GuzzleTestCase
         $chain = new Cbix\ChainCore($this->client);
         $chain->send_transaction('0100000001ec...');
     }
+
+    public function test_get_block_returns_correct_response()
+    {
+        $mock = new GuzzleHttp\Subscriber\Mock([
+            __DIR__ . '/mock/block.txt'
+        ]);
+
+        $this->client->getEmitter()->attach($mock);
+
+        $chain = new Cbix\ChainCore($this->client);
+        $result = $chain->get_block('00000000000000009cc33fe219537756a68ee5433d593034b6dc200b34aa35fa');
+
+        $this->assertEquals('00000000000000009cc33fe219537756a68ee5433d593034b6dc200b34aa35fa', $result->hash);
+    }
+
+    public function test_get_block_throws_an_exception()
+    {
+        $this->setExpectedException('Cbix\ChainException');
+
+        $mock = new GuzzleHttp\Subscriber\Mock([
+            new GuzzleHttp\Message\Response(400),
+        ]);
+
+        $this->client->getEmitter()->attach($mock);
+
+        $chain = new Cbix\ChainCore($this->client);
+        $chain->get_block('00000000000000009cc33fe219537756a68ee5433d593034b6dc200b34aa35fa');
+    }
+
+    public function test_get_block_op_returns_returns_correct_response()
+    {
+        $mock = new GuzzleHttp\Subscriber\Mock([
+            __DIR__ . '/mock/block_op_returns.txt'
+        ]);
+
+        $this->client->getEmitter()->attach($mock);
+
+        $chain = new Cbix\ChainCore($this->client);
+        $result = $chain->get_block_op_returns('308920');
+
+        $this->assertCount(3, $result);
+        $this->assertEquals('ac886fb0e36ab06ff28200c439236c155e0689f9919a92d1db48f960e11b1cef', $result[0]->transaction_hash);
+    }
+
+    public function test_get_block_op_returns_throws_an_exception()
+    {
+        $this->setExpectedException('Cbix\ChainException');
+
+        $mock = new GuzzleHttp\Subscriber\Mock([
+            new GuzzleHttp\Message\Response(400),
+        ]);
+
+        $this->client->getEmitter()->attach($mock);
+
+        $chain = new Cbix\ChainCore($this->client);
+        $chain->get_block_op_returns('308920');
+    }
 }
