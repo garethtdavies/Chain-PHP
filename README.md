@@ -3,7 +3,7 @@ ChainPHP
 
 This library provides a simple PHP interface to the [Chain Bitcoin API](https://chain.com/).
 
-All methods are supported including creating webhooks and events. You will need to [sign up to Chain](https://chain.com/) for a free API Key and Secret as they are needed to authenticate requests.
+[All methods](https://chain.com/docs) are supported including creating webhooks and events. You will need to [sign up to Chain](https://chain.com/) for a free API Key and Secret as they are needed to authenticate requests.
 
 ### Installing via Composer
 
@@ -42,8 +42,8 @@ Address methods return a [Bitcoin Address Object](https://chain.com/docs#bitcoin
 
 ### Transaction
 
-Transactions methods return a [Bitcoin Transaction Object](https://chain.com/docs#bitcoin-address-transactions).
-You can send a transaction to the blockchain but you will need to determine the appropriate hex representation of the signed transaction.
+Transaction methods return a [Bitcoin Transaction Object](https://chain.com/docs#bitcoin-address-transactions).
+You may send a transaction to the blockchain but you will need to determine the appropriate hex representation of the signed transaction.
 In order to achieve this please consider using the [bitcoin-lib-php library](https://github.com/Bit-Wasp/bitcoin-lib-php).
 
     $transaction = $chain->get_transaction('0f40015ddbb8a05e26bbacfb70b6074daa1990b813ba9bc70b7ac5b0b6ee2c45');
