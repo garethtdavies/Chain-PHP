@@ -1,20 +1,4 @@
-status: 200 OK
-version: HTTP/1.1
-access-control-allow-credentials: true
-access-control-allow-methods: GET,POST,PATCH,PUT,DELETE,OPTIONS,HEAD
-cache-control: max-age=0, private, must-revalidate
-cf-ray: 173dd5a5bcd10c35-SEA
-content-encoding: gzip
-content-type: application/json; charset=utf-8
-date: Sat, 04 Oct 2014 02:08:57 GMT
-etag: W/"6c279ddf4f6c66cae1749cf7acb7d033"
-server: cloudflare-nginx
-strict-transport-security: max-age=31536000
-vary: Accept-Encoding
-x-content-type-options: nosniff
-x-frame-options: SAMEORIGIN
-x-request-id: e1b8debc-be64-4a4e-9587-bbea13e1f2e2
-x-runtime: 0.011942
-x-xss-protection: 1; mode=block
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
 
 {"hash":"17x23dNjXJLzGMev6R63uyRhMWP1VHawKc","balance":5000000000,"received":5000000000,"sent":0,"unconfirmed_received":0,"unconfirmed_sent":0,"unconfirmed_balance":0}
