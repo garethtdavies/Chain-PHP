@@ -28,7 +28,7 @@ require 'vendor/autoload.php';
 You will need to provide your API Key ID and API Key Secret as provided by Chain to authenticate your requests. There is an optional third parameter, which if set to true will use the Bitcoin Testnet3 block chain.
 It defaults to using the Bitcoin Mainnet if not specified or set to false.
 
-    $chain = Chain::link($key, $secret, false);
+    $chain = Chain::make($key, $secret, false);
 
 ### Address
 

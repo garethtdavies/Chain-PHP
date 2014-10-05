@@ -14,7 +14,7 @@ class Chain
      * @param bool $testnet
      * @return ChainCore
      */
-    public static function link($key, $secret, $testnet = false)
+    public static function make($key, $secret, $testnet = false)
     {
         $blockchain = $testnet === true ? 'testnet3' : 'bitcoin';
 

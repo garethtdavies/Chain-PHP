@@ -5,7 +5,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php';
 use Cbix\Chain;
 use Cbix\ChainException;
 
-$chain = Chain::link('key', 'secret', false);
+$chain = Chain::make('key', 'secret', false);
 try {
     $result = $chain->get_address('17x23dNjXJLzGMev6R63uyRhMWP1VHawKc');
     $balance = $result->balance;
