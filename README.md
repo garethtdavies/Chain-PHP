@@ -104,3 +104,7 @@ This library uses PHPUnit for unit testing. In order to run the unit tests, you'
 to install the dependencies of the project using Composer: `php composer.phar install --dev`.
 You can then run the tests using `vendor/bin/phpunit`. The library comes with a set of mocked responses
 from the Chain API for running the unit tests.
+
+### Contributions
+
+Patches, bug fixes, feature requests, and pull requests are welcome on the GitHub page for this project.
