@@ -278,4 +278,92 @@ class ChainCoreTest extends \Guzzle\Tests\GuzzleTestCase
         $chain = new Cbix\ChainCore($this->client);
         $chain->get_block_op_returns('308920');
     }
+
+    public function test_create_webhook_returns_correct_response()
+    {
+        $mock = new GuzzleHttp\Subscriber\Mock([
+            __DIR__ . '/mock/webhook.txt'
+        ]);
+
+        $this->client->getEmitter()->attach($mock);
+
+        $chain = new Cbix\ChainCore($this->client);
+        $result = $chain->create_webhook('https://username:password@your-server-url.com', 'your-webhook-id');
+
+        $this->assertEquals('FFA21991-5669-4728-8C83-74DEC4C93A4A', $result->id);
+    }
+
+    public function test_create_webhook_throws_an_exception()
+    {
+        $this->setExpectedException('Cbix\ChainException');
+
+        $mock = new GuzzleHttp\Subscriber\Mock([
+            new GuzzleHttp\Message\Response(400),
+        ]);
+
+        $this->client->getEmitter()->attach($mock);
+
+        $chain = new Cbix\ChainCore($this->client);
+        $chain->create_webhook('https://username:password@your-server-url.com', 'your-webhook-id');
+    }
+
+    public function test_list_webhooks_returns_correct_response()
+    {
+        //TODO
+    }
+
+    public function test_list_webhooks_throws_an_exception()
+    {
+        //TODO
+    }
+
+    public function test_update_webhook_returns_correct_response()
+    {
+        //TODO
+    }
+
+    public function test_update_webhook_throws_an_exception()
+    {
+        //TODO
+    }
+
+    public function test_delete_webhook_returns_correct_response()
+{
+    //TODO
+}
+
+    public function test_delete_webhook_throws_an_exception()
+    {
+        //TODO
+    }
+
+    public function test_create_webhook_event_returns_correct_response()
+    {
+        //TODO
+    }
+
+    public function test_create_webhook_event_throws_an_exception()
+    {
+        //TODO
+    }
+
+    public function test_list_webhook_events_returns_correct_response()
+    {
+        //TODO
+    }
+
+    public function test_list_webhook_events_throws_an_exception()
+    {
+        //TODO
+    }
+
+    public function test_delete_webhook_event_returns_correct_response()
+    {
+        //TODO
+    }
+
+    public function test_delete_webhook_event_throws_an_exception()
+    {
+        //TODO
+    }
 }
