@@ -309,7 +309,17 @@ class ChainCoreTest extends \Guzzle\Tests\GuzzleTestCase
 
     public function test_list_webhooks_returns_correct_response()
     {
-        //TODO
+        $mock = new GuzzleHttp\Subscriber\Mock([
+            __DIR__ . '/mock/webhooks.txt'
+        ]);
+
+        $this->client->getEmitter()->attach($mock);
+
+        $chain = new Cbix\ChainCore($this->client);
+        $result = $chain->list_webhooks();
+
+        $this->assertCount(2, $result);
+        $this->assertEquals('FFA21991-5669-4728-8C83-74DEC4C93A4A', $result[0]->id);
     }
 
     public function test_list_webhooks_throws_an_exception()
@@ -328,7 +338,16 @@ class ChainCoreTest extends \Guzzle\Tests\GuzzleTestCase
 
     public function test_update_webhook_returns_correct_response()
     {
-        //TODO
+        $mock = new GuzzleHttp\Subscriber\Mock([
+            __DIR__ . '/mock/webhook_update.txt'
+        ]);
+
+        $this->client->getEmitter()->attach($mock);
+
+        $chain = new Cbix\ChainCore($this->client);
+        $result = $chain->update_webhook('FFA21991-5669-4728-8C83-74DEC4C93A4A', 'https://your-updated-url.com');
+
+        $this->assertEquals('FFA21991-5669-4728-8C83-74DEC4C93A4A', $result->id);
     }
 
     public function test_update_webhook_throws_an_exception()
@@ -346,9 +365,18 @@ class ChainCoreTest extends \Guzzle\Tests\GuzzleTestCase
     }
 
     public function test_delete_webhook_returns_correct_response()
-{
-    //TODO
-}
+    {
+        $mock = new GuzzleHttp\Subscriber\Mock([
+            __DIR__ . '/mock/webhook_delete.txt'
+        ]);
+
+        $this->client->getEmitter()->attach($mock);
+
+        $chain = new Cbix\ChainCore($this->client);
+        $result = $chain->delete_webhook('FFA21991-5669-4728-8C83-74DEC4C93A4A');
+
+        $this->assertEquals('FFA21991-5669-4728-8C83-74DEC4C93A4A', $result->id);
+    }
 
     public function test_delete_webhook_throws_an_exception()
     {
