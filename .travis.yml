@@ -7,8 +7,15 @@ php:
   - 5.6
   - hhvm
 
+addons:
+  code_climate:
+    repo_token: 3996e39291bba1b546aff6051ffbae1d8e7ed15342ec7fc1041c64f1c5c5fe78
+
 before_script:
   - curl -s http://getcomposer.org/installer | php
   - php composer.phar install --dev
 
 script: phpunit
+
+after_script:
+  - vendor/bin/test-reporter
