@@ -137,4 +137,32 @@ class ChainCoreTest extends \Guzzle\Tests\GuzzleTestCase
         $chain = new Cbix\ChainCore($this->client);
         $chain->get_address_op_returns('1K4nPxBMy6sv7jssTvDLJWk1ADHBZEoUVb');
     }
+
+    public function test_get_transaction_returns_correct_response()
+    {
+        $mock = new GuzzleHttp\Subscriber\Mock([
+            __DIR__ . '/mock/transaction.txt'
+        ]);
+
+        $this->client->getEmitter()->attach($mock);
+
+        $chain = new Cbix\ChainCore($this->client);
+        $result = $chain->get_transaction('0f40015ddbb8a05e26bbacfb70b6074daa1990b813ba9bc70b7ac5b0b6ee2c45');
+
+        $this->assertEquals('0f40015ddbb8a05e26bbacfb70b6074daa1990b813ba9bc70b7ac5b0b6ee2c45', $result->hash);
+    }
+
+    public function test_get_transaction_throws_an_exception()
+    {
+        $this->setExpectedException('Cbix\ChainException');
+
+        $mock = new GuzzleHttp\Subscriber\Mock([
+            new GuzzleHttp\Message\Response(400),
+        ]);
+
+        $this->client->getEmitter()->attach($mock);
+
+        $chain = new Cbix\ChainCore($this->client);
+        $chain->get_transaction('0f40015ddbb8a05e26bbacfb70b6074daa1990b813ba9bc70b7ac5b0b6ee2c45');
+    }
 }
