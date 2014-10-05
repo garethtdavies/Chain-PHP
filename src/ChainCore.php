@@ -282,7 +282,7 @@ class ChainCore implements ChainInterface
             $response = $this->client->post("webhooks/{$webhook_id}/events", [
                     'body' => [
                         'event' => $options['event'],
-                        'blockchain' => $options['blockchain'],
+                        'block_chain' => $options['block_chain'],
                         'address' => $options['address'],
                         'confirmations' => $options['confirmations'],
                     ]

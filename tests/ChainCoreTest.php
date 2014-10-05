@@ -314,7 +314,16 @@ class ChainCoreTest extends \Guzzle\Tests\GuzzleTestCase
 
     public function test_list_webhooks_throws_an_exception()
     {
-        //TODO
+        $this->setExpectedException('Cbix\ChainException');
+
+        $mock = new GuzzleHttp\Subscriber\Mock([
+            new GuzzleHttp\Message\Response(400),
+        ]);
+
+        $this->client->getEmitter()->attach($mock);
+
+        $chain = new Cbix\ChainCore($this->client);
+        $chain->list_webhooks();
     }
 
     public function test_update_webhook_returns_correct_response()
@@ -324,7 +333,16 @@ class ChainCoreTest extends \Guzzle\Tests\GuzzleTestCase
 
     public function test_update_webhook_throws_an_exception()
     {
-        //TODO
+        $this->setExpectedException('Cbix\ChainException');
+
+        $mock = new GuzzleHttp\Subscriber\Mock([
+            new GuzzleHttp\Message\Response(400),
+        ]);
+
+        $this->client->getEmitter()->attach($mock);
+
+        $chain = new Cbix\ChainCore($this->client);
+        $chain->update_webhook('FFA21991-5669-4728-8C83-74DEC4C93A4A', 'https://your-updated-url.com');
     }
 
     public function test_delete_webhook_returns_correct_response()
@@ -334,7 +352,16 @@ class ChainCoreTest extends \Guzzle\Tests\GuzzleTestCase
 
     public function test_delete_webhook_throws_an_exception()
     {
-        //TODO
+        $this->setExpectedException('Cbix\ChainException');
+
+        $mock = new GuzzleHttp\Subscriber\Mock([
+            new GuzzleHttp\Message\Response(400),
+        ]);
+
+        $this->client->getEmitter()->attach($mock);
+
+        $chain = new Cbix\ChainCore($this->client);
+        $chain->delete_webhook('FFA21991-5669-4728-8C83-74DEC4C93A4A');
     }
 
     public function test_create_webhook_event_returns_correct_response()
@@ -344,7 +371,16 @@ class ChainCoreTest extends \Guzzle\Tests\GuzzleTestCase
 
     public function test_create_webhook_event_throws_an_exception()
     {
-        //TODO
+        $this->setExpectedException('Cbix\ChainException');
+
+        $mock = new GuzzleHttp\Subscriber\Mock([
+            new GuzzleHttp\Message\Response(400),
+        ]);
+
+        $this->client->getEmitter()->attach($mock);
+
+        $chain = new Cbix\ChainCore($this->client);
+        $chain->create_webhook_event('FFA21991-5669-4728-8C83-74DEC4C93A4A', ['event' => 'address-transaction', 'block_chain' => 'bitcoin', 'address' => '1...', 'confirmations' => 1]);
     }
 
     public function test_list_webhook_events_returns_correct_response()
@@ -354,7 +390,16 @@ class ChainCoreTest extends \Guzzle\Tests\GuzzleTestCase
 
     public function test_list_webhook_events_throws_an_exception()
     {
-        //TODO
+        $this->setExpectedException('Cbix\ChainException');
+
+        $mock = new GuzzleHttp\Subscriber\Mock([
+            new GuzzleHttp\Message\Response(400),
+        ]);
+
+        $this->client->getEmitter()->attach($mock);
+
+        $chain = new Cbix\ChainCore($this->client);
+        $chain->list_webhook_events('FFA21991-5669-4728-8C83-74DEC4C93A4A');
     }
 
     public function test_delete_webhook_event_returns_correct_response()
@@ -364,6 +409,15 @@ class ChainCoreTest extends \Guzzle\Tests\GuzzleTestCase
 
     public function test_delete_webhook_event_throws_an_exception()
     {
-        //TODO
+        $this->setExpectedException('Cbix\ChainException');
+
+        $mock = new GuzzleHttp\Subscriber\Mock([
+            new GuzzleHttp\Message\Response(400),
+        ]);
+
+        $this->client->getEmitter()->attach($mock);
+
+        $chain = new Cbix\ChainCore($this->client);
+        $chain->delete_webhook_event('FFA21991-5669-4728-8C83-74DEC4C93A4A', 'address-transaction', '1...');
     }
 }
