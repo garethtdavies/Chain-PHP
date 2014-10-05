@@ -165,4 +165,60 @@ class ChainCoreTest extends \Guzzle\Tests\GuzzleTestCase
         $chain = new Cbix\ChainCore($this->client);
         $chain->get_transaction('0f40015ddbb8a05e26bbacfb70b6074daa1990b813ba9bc70b7ac5b0b6ee2c45');
     }
+
+    public function test_get_transaction_op_return_returns_correct_response()
+    {
+        $mock = new GuzzleHttp\Subscriber\Mock([
+            __DIR__ . '/mock/transaction_op_returns.txt'
+        ]);
+
+        $this->client->getEmitter()->attach($mock);
+
+        $chain = new Cbix\ChainCore($this->client);
+        $result = $chain->get_transaction_op_return('4a7d62a4a5cc912605c46c6a6ef6c4af451255a453e6cbf2b1022766c331f803');
+
+        $this->assertEquals('4a7d62a4a5cc912605c46c6a6ef6c4af451255a453e6cbf2b1022766c331f803', $result->transaction_hash);
+    }
+
+    public function test_get_transaction_op_return_throws_an_exception()
+    {
+        $this->setExpectedException('Cbix\ChainException');
+
+        $mock = new GuzzleHttp\Subscriber\Mock([
+            new GuzzleHttp\Message\Response(400),
+        ]);
+
+        $this->client->getEmitter()->attach($mock);
+
+        $chain = new Cbix\ChainCore($this->client);
+        $chain->get_transaction_op_return('0f40015ddbb8a05e26bbacfb70b6074daa1990b813ba9bc70b7ac5b0b6ee2c45');
+    }
+
+    public function test_transaction_send_returns_correct_response()
+    {
+        $mock = new GuzzleHttp\Subscriber\Mock([
+            __DIR__ . '/mock/transaction_send.txt'
+        ]);
+
+        $this->client->getEmitter()->attach($mock);
+
+        $chain = new Cbix\ChainCore($this->client);
+        $result = $chain->send_transaction('0100000001ec...');
+
+        $this->assertEquals('f468a7...', $result->transaction_hash);
+    }
+
+    public function test_transaction_send_throws_an_exception()
+    {
+        $this->setExpectedException('Cbix\ChainException');
+
+        $mock = new GuzzleHttp\Subscriber\Mock([
+            new GuzzleHttp\Message\Response(400),
+        ]);
+
+        $this->client->getEmitter()->attach($mock);
+
+        $chain = new Cbix\ChainCore($this->client);
+        $chain->send_transaction('0100000001ec...');
+    }
 }
