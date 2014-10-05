@@ -1,5 +1,5 @@
 {
-    "name": "cbix/chain",
+    "name": "cbix/chain-php",
     "description": "PHP library for the Circle Bitcoin API",
     "keywords": ["bitcoin"],
     "minimum-stability": "dev",
