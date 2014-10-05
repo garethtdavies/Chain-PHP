@@ -79,4 +79,33 @@ class ChainCoreTest extends \Guzzle\Tests\GuzzleTestCase
         $chain = new Cbix\ChainCore($this->client);
         $chain->get_address_transactions('1K4nPxBMy6sv7jssTvDLJWk1ADHBZEoUVb');
     }
+
+    public function test_get_address_unspents_returns_correct_response()
+    {
+        $mock = new GuzzleHttp\Subscriber\Mock([
+            __DIR__ . '/mock/address_unspents.txt'
+        ]);
+
+        $this->client->getEmitter()->attach($mock);
+
+        $chain = new Cbix\ChainCore($this->client);
+        $result = $chain->get_address_unspents('1K4nPxBMy6sv7jssTvDLJWk1ADHBZEoUVb', '1EX1E9n3bPA1zGKDV5iHY2MnM7n5tDfnfH');
+
+        $this->assertCount(4, $result);
+        $this->assertEquals('80ec89837a388421e81d912b9e695b7920990dad85956ff5bc484ce82b19db6c', $result[0]->transaction_hash);
+    }
+
+    public function test_get_address_unspents_throws_an_exception()
+    {
+        $this->setExpectedException('Cbix\ChainException');
+
+        $mock = new GuzzleHttp\Subscriber\Mock([
+            new GuzzleHttp\Message\Response(400),
+        ]);
+
+        $this->client->getEmitter()->attach($mock);
+
+        $chain = new Cbix\ChainCore($this->client);
+        $chain->get_address_unspents('1K4nPxBMy6sv7jssTvDLJWk1ADHBZEoUVb');
+    }
 }
