@@ -6,17 +6,80 @@ use Cbix\Chain;
 use Cbix\ChainException;
 
 $chain = Chain::make('key', 'secret', false);
+
+/*
+ * Single Address
+ * Returns basic balance details for one or more Bitcoin addresses
+ */
+
 try {
     $result = $chain->get_address('17x23dNjXJLzGMev6R63uyRhMWP1VHawKc');
-    $balance = $result->balance;
+    // returns a Bitcoin Address Object (https://chain.com/docs#object-bitcoin-address)
+    var_dump($result);
 } catch (ChainException $e) {
     //There was an error more information in $e->getMessage();
-    echo(json_decode($e->getMessage())->message);
+    echo "Something went wrong!";
 }
 
-//Single address
+/*
+ * Multiple Address
+ * maximum 200 per request limit by Chain API
+ */
 
-//returns a Bitcoin Address Object (https://chain.com/docs#object-bitcoin-address)
+try {
+    $result = $chain->get_address([
+            '17x23dNjXJLzGMev6R63uyRhMWP1VHawKc',
+            '1EX1E9n3bPA1zGKDV5iHY2MnM7n5tDfnfH'
+        ]);
 
+    // returns an array of Address Objects
+    foreach ($result as $r) {
+        var_dump($r);
+    }
+} catch (ChainException $e) {
+    //There was an error more information in $e->getMessage();
+    echo "Something went wrong!";
+}
 
-//Multiple address
+/*
+ * Transactions
+ * Returns a set of transactions for one or more Bitcoin addresses.
+ * optional limit parameter, defaults to 50, max = 500
+ */
+
+try {
+    $result = $chain->get_transaction('17x23dNjXJLzGMev6R63uyRhMWP1VHawKc', ['limit' => 10]);
+    // returns an array of Transaction Objects (https://chain.com/docs#object-bitcoin-transaction)
+    var_dump($result);
+} catch (ChainException $e) {
+    //There was an error more information in $e->getMessage();
+    echo "Something went wrong!";
+}
+
+/*
+ * Unspents
+ * Returns a collection of unspent outputs for a Bitcoin address. These outputs can be used as inputs for a new transaction
+ */
+
+try {
+    $result = $chain->get_address_unspents('1K4nPxBMy6sv7jssTvDLJWk1ADHBZEoUVb');
+    // returns an Output Object
+    var_dump($result);
+} catch (ChainException $e) {
+    //There was an error more information in $e->getMessage();
+    echo "Something went wrong!";
+}
+
+/*
+ * OP_RETURN
+ * Returns any OP_RETURN values sent and received by a Bitcoin Address.
+ */
+
+try {
+    $result = $chain->get_address_op_returns('1K4nPxBMy6sv7jssTvDLJWk1ADHBZEoUVb');
+    // returns an array of OP_RETURN Objects.
+    var_dump($result);
+} catch (ChainException $e) {
+    //There was an error more information in $e->getMessage();
+    echo "Something went wrong!";
+}
