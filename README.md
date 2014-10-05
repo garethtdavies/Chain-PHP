@@ -3,6 +3,7 @@ ChainPHP
 
 [![Build Status](https://travis-ci.org/Digital-Currency-Research/Chain-PHP.svg)](https://travis-ci.org/Digital-Currency-Research/Chain-PHP)
 [![Code Climate](https://codeclimate.com/github/Digital-Currency-Research/Chain-PHP/badges/gpa.svg)](https://codeclimate.com/github/Digital-Currency-Research/Chain-PHP)
+[![Test Coverage](https://codeclimate.com/github/Digital-Currency-Research/Chain-PHP/badges/coverage.svg)](https://codeclimate.com/github/Digital-Currency-Research/Chain-PHP)
 
 This library provides a simple PHP interface to the [Chain Bitcoin API](https://chain.com/).
 
