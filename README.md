@@ -1,4 +1,4 @@
-ChainPHP
+Chain-PHP
 ========
 
 [![Build Status](https://travis-ci.org/Digital-Currency-Research/Chain-PHP.svg)](https://travis-ci.org/Digital-Currency-Research/Chain-PHP)
