@@ -83,7 +83,7 @@ When creating webhooks the id attribute may be specified or if not provided will
 
     $create_webhook = $webhook->create_webhook('https://username:password@your-server-url.com', 'FFA21991-5669-4728-8C83-74DEC4C93A4A');
     $list_webhooks = $webhook->list_webhooks();
-    $update_webhook = $webhook->update_webhook('FFA21991-5669-4728-8C83-74DEC4C93A4A');
+    $update_webhook = $webhook->update_webhook('FFA21991-5669-4728-8C83-74DEC4C93A4A', 'https://username:password@your-server-url.com');
     $delete_webhook = $webhook->delete_webhook('FFA21991-5669-4728-8C83-74DEC4C93A4A');
 
     $options = [
