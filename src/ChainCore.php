@@ -32,7 +32,7 @@ class ChainCore implements ChainInterface
         $address = is_array($address) ? implode(',', $address) : $address;
 
         try {
-            $response = $this->client->get("addressesss/{$address}");
+            $response = $this->client->get("addresses/{$address}");
         } catch (RequestException $e) {
             throw new ChainException($e->getResponse()->getbody());
         }

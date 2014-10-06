@@ -50,7 +50,7 @@ try {
  */
 
 try {
-    $result = $chain->get_transaction('17x23dNjXJLzGMev6R63uyRhMWP1VHawKc', ['limit' => 10]);
+    $result = $chain->get_address_transactions('1K4nPxBMy6sv7jssTvDLJWk1ADHBZEoUVb', ['limit' => 10]);
     // returns an array of Transaction Objects (https://chain.com/docs#object-bitcoin-transaction)
     var_dump($result);
 } catch (ChainException $e) {
