@@ -8,7 +8,7 @@ use Cbix\ChainException;
 $chain = Chain::make('key', 'secret', false);
 
 /*
- * Single Address
+ * Get Bitcoin Address
  * Returns basic balance details for one or more Bitcoin addresses
  */
 
@@ -22,17 +22,19 @@ try {
 }
 
 /*
- * Multiple Address
+ * Get Multiple Bitcoin Address
  * maximum 200 per request limit by Chain API
  */
 
 try {
-    $result = $chain->get_address([
+    $result = $chain->get_address(
+        [
             '17x23dNjXJLzGMev6R63uyRhMWP1VHawKc',
             '1EX1E9n3bPA1zGKDV5iHY2MnM7n5tDfnfH'
-        ]);
+        ]
+    );
 
-    // returns an array of Address Objects
+    // returns an array of Bitcoin Address Objects (https://chain.com/docs#object-bitcoin-address)
     foreach ($result as $r) {
         var_dump($r);
     }
@@ -42,7 +44,7 @@ try {
 }
 
 /*
- * Transactions
+ * Get Bitcoin Address Transactions
  * Returns a set of transactions for one or more Bitcoin addresses.
  * optional limit parameter, defaults to 50, max = 500
  */
@@ -57,7 +59,7 @@ try {
 }
 
 /*
- * Unspents
+ * Bitcoin Address Unspent Outputs
  * Returns a collection of unspent outputs for a Bitcoin address. These outputs can be used as inputs for a new transaction
  */
 
@@ -71,7 +73,7 @@ try {
 }
 
 /*
- * OP_RETURN
+ * Bitcoin Address OP_RETURNs
  * Returns any OP_RETURN values sent and received by a Bitcoin Address.
  */
 
