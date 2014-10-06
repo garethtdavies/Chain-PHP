@@ -27,4 +27,21 @@ class Chain
 
         return new ChainCore($client);
     }
+
+    /**
+     * @param $key
+     * @param $secret
+     * @return ChainWebhook
+     */
+    public static function webhook($key, $secret)
+    {
+        $client = new Client([
+            'base_url' => ["https://api.chain.com/{version}/", ['version' => 'v1']],
+            'defaults' => [
+                'auth' => [$key, $secret],
+            ]
+        ]);
+
+        return new ChainWebhook($client);
+    }
 }
