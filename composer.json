@@ -1,7 +1,7 @@
 {
     "name": "cbix/chain-php",
-    "description": "PHP library for the Circle Bitcoin API",
-    "keywords": ["bitcoin"],
+    "description": "PHP library for the Chain Bitcoin API",
+    "keywords": ["bitcoin", "chain"],
     "minimum-stability": "dev",
     "license": "MIT",
     "authors": [

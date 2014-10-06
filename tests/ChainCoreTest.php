@@ -89,10 +89,16 @@ class ChainCoreTest extends \Guzzle\Tests\GuzzleTestCase
         $this->client->getEmitter()->attach($mock);
 
         $chain = new Cbix\ChainCore($this->client);
-        $result = $chain->get_address_unspents('1K4nPxBMy6sv7jssTvDLJWk1ADHBZEoUVb', '1EX1E9n3bPA1zGKDV5iHY2MnM7n5tDfnfH');
+        $result = $chain->get_address_unspents(
+            '1K4nPxBMy6sv7jssTvDLJWk1ADHBZEoUVb',
+            '1EX1E9n3bPA1zGKDV5iHY2MnM7n5tDfnfH'
+        );
 
         $this->assertCount(4, $result);
-        $this->assertEquals('80ec89837a388421e81d912b9e695b7920990dad85956ff5bc484ce82b19db6c', $result[0]->transaction_hash);
+        $this->assertEquals(
+            '80ec89837a388421e81d912b9e695b7920990dad85956ff5bc484ce82b19db6c',
+            $result[0]->transaction_hash
+        );
     }
 
     public function test_get_address_unspents_throws_an_exception()
@@ -121,7 +127,10 @@ class ChainCoreTest extends \Guzzle\Tests\GuzzleTestCase
         $result = $chain->get_address_op_returns('1Bj5UVzWQ84iBCUiy5eQ1NEfWfJ4a3yKG1');
 
         $this->assertCount(76, $result);
-        $this->assertEquals('7675ae05dc8b85c4218b5bd3ec0cee49766f915b863e91ab3eb26e9d3ebe8b47', $result[0]->transaction_hash);
+        $this->assertEquals(
+            '7675ae05dc8b85c4218b5bd3ec0cee49766f915b863e91ab3eb26e9d3ebe8b47',
+            $result[0]->transaction_hash
+        );
     }
 
     public function test_get_address_op_returns_throws_an_exception()
@@ -177,7 +186,10 @@ class ChainCoreTest extends \Guzzle\Tests\GuzzleTestCase
         $chain = new Cbix\ChainCore($this->client);
         $result = $chain->get_transaction_op_return('4a7d62a4a5cc912605c46c6a6ef6c4af451255a453e6cbf2b1022766c331f803');
 
-        $this->assertEquals('4a7d62a4a5cc912605c46c6a6ef6c4af451255a453e6cbf2b1022766c331f803', $result->transaction_hash);
+        $this->assertEquals(
+            '4a7d62a4a5cc912605c46c6a6ef6c4af451255a453e6cbf2b1022766c331f803',
+            $result->transaction_hash
+        );
     }
 
     public function test_get_transaction_op_return_throws_an_exception()
@@ -262,7 +274,10 @@ class ChainCoreTest extends \Guzzle\Tests\GuzzleTestCase
         $result = $chain->get_block_op_returns('308920');
 
         $this->assertCount(3, $result);
-        $this->assertEquals('ac886fb0e36ab06ff28200c439236c155e0689f9919a92d1db48f960e11b1cef', $result[0]->transaction_hash);
+        $this->assertEquals(
+            'ac886fb0e36ab06ff28200c439236c155e0689f9919a92d1db48f960e11b1cef',
+            $result[0]->transaction_hash
+        );
     }
 
     public function test_get_block_op_returns_throws_an_exception()
@@ -401,7 +416,10 @@ class ChainCoreTest extends \Guzzle\Tests\GuzzleTestCase
         $this->client->getEmitter()->attach($mock);
 
         $chain = new Cbix\ChainCore($this->client);
-        $result = $chain->create_webhook_event('29CDE78E-7BFA-4401-BC0A-3071C88A86F0', ['event' => 'address-transaction', 'block_chain' => 'bitcoin', 'address' => '1...', 'confirmations' => 1]);
+        $result = $chain->create_webhook_event(
+            '29CDE78E-7BFA-4401-BC0A-3071C88A86F0',
+            ['event' => 'address-transaction', 'block_chain' => 'bitcoin', 'address' => '1...', 'confirmations' => 1]
+        );
 
         $this->assertEquals('29CDE78E-7BFA-4401-BC0A-3071C88A86F0', $result->id);
     }
@@ -417,7 +435,10 @@ class ChainCoreTest extends \Guzzle\Tests\GuzzleTestCase
         $this->client->getEmitter()->attach($mock);
 
         $chain = new Cbix\ChainCore($this->client);
-        $chain->create_webhook_event('FFA21991-5669-4728-8C83-74DEC4C93A4A', ['event' => 'address-transaction', 'block_chain' => 'bitcoin', 'address' => '1...', 'confirmations' => 1]);
+        $chain->create_webhook_event(
+            'FFA21991-5669-4728-8C83-74DEC4C93A4A',
+            ['event' => 'address-transaction', 'block_chain' => 'bitcoin', 'address' => '1...', 'confirmations' => 1]
+        );
     }
 
     public function test_list_webhook_events_returns_correct_response()

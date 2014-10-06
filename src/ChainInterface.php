@@ -4,7 +4,7 @@ interface ChainInterface
 {
     public function get_address($address);
 
-    public function get_address_transactions($address, $options=[]);
+    public function get_address_transactions($address, $options = []);
 
     public function get_address_unspents($address);
 
@@ -22,7 +22,7 @@ interface ChainInterface
 
     public function get_block_op_returns($block);
 
-    public function create_webhook($url, $webhook_id='');
+    public function create_webhook($url, $webhook_id = '');
 
     public function list_webhooks();
 
@@ -30,7 +30,7 @@ interface ChainInterface
 
     public function delete_webhook($webhook_id);
 
-    public function create_webhook_event($webhook_id, $options=[]);
+    public function create_webhook_event($webhook_id, $options = []);
 
     public function list_webhook_events($webhook_id);
 

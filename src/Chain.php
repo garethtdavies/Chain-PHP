@@ -21,7 +21,7 @@ class Chain
         $client = new Client([
             'base_url' => ["https://api.chain.com/{version}/{$blockchain}/", ['version' => 'v1']],
             'defaults' => [
-                'auth'    => [$key, $secret],
+                'auth' => [$key, $secret],
             ]
         ]);
 

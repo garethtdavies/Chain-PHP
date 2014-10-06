@@ -46,7 +46,7 @@ class ChainCore implements ChainInterface
      * @return mixed
      * @throws ChainException
      */
-    public function get_address_transactions($address, $options=[])
+    public function get_address_transactions($address, $options = [])
     {
         $address = is_array($address) ? implode(',', $address) : $address;
         $limit = isset($options['limit']) ? $options['limit'] : 50;
@@ -136,11 +136,14 @@ class ChainCore implements ChainInterface
     public function send_transaction($hex)
     {
         try {
-            $response = $this->client->post("transactions", [
+            $response = $this->client->post(
+                "transactions",
+                [
                     'body' => [
                         'hex' => $hex
                     ]
-                ]);
+                ]
+            );
         } catch (RequestException $e) {
             throw new ChainException($e->getResponse()->getbody());
         }
@@ -204,12 +207,15 @@ class ChainCore implements ChainInterface
     public function create_webhook($url, $webhook_id = '')
     {
         try {
-            $response = $this->client->post("webhooks", [
+            $response = $this->client->post(
+                "webhooks",
+                [
                     'body' => [
                         'url' => $url,
                         'id' => $webhook_id
                     ]
-                ]);
+                ]
+            );
         } catch (RequestException $e) {
             throw new ChainException($e->getResponse()->getbody());
         }
@@ -241,12 +247,15 @@ class ChainCore implements ChainInterface
     public function update_webhook($webhook_id, $url)
     {
         try {
-            $response = $this->client->put("webhooks", [
+            $response = $this->client->put(
+                "webhooks",
+                [
                     'body' => [
                         'id' => $webhook_id,
                         'url' => $url,
                     ]
-                ]);
+                ]
+            );
         } catch (RequestException $e) {
             throw new ChainException($e->getResponse()->getbody());
         }
@@ -279,14 +288,17 @@ class ChainCore implements ChainInterface
     public function create_webhook_event($webhook_id, $options = [])
     {
         try {
-            $response = $this->client->post("webhooks/{$webhook_id}/events", [
+            $response = $this->client->post(
+                "webhooks/{$webhook_id}/events",
+                [
                     'body' => [
                         'event' => $options['event'],
                         'block_chain' => $options['block_chain'],
                         'address' => $options['address'],
                         'confirmations' => $options['confirmations'],
                     ]
-                ]);
+                ]
+            );
         } catch (RequestException $e) {
             throw new ChainException($e->getResponse()->getbody());
         }
