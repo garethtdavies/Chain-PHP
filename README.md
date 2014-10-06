@@ -97,7 +97,7 @@ When creating webhooks the id attribute may be specified or if not provided will
     $list_webhook_events = $webhook->list_webhook_events('FFA21991-5669-4728-8C83-74DEC4C93A4A');
     $delete_webhook_event = $webhook->delete_webhook_event('FFA21991-5669-4728-8C83-74DEC4C93A4A');
 
-### Exceptions
+## Exceptions
 
 If there are any issues during the API request a ChainException or ChainWebhookException will be thrown which can be caught
 and managed according to your application needs.
@@ -110,13 +110,13 @@ and managed according to your application needs.
         var_dump($e->getMessage());
     }
 
-### Unit Tests
+## Unit Tests
 
 This library uses PHPUnit for unit testing. In order to run the unit tests, you'll first need
 to install the dependencies of the project using Composer: `php composer.phar install --dev`.
 You can then run the tests using `vendor/bin/phpunit`. The library comes with a set of mocked responses
 from the Chain API for running the unit tests.
 
-### Contributions
+## Contributions
 
 Patches, bug fixes, feature requests, and pull requests are welcome.
