@@ -5,7 +5,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php';
 use Cbix\Chain;
 use Cbix\ChainException;
 
-$chain = Chain::make('key', 'secret', false);
+$chain = Chain::make('key', 'secret ', false);
 
 /*
  * Get Bitcoin Block
@@ -47,4 +47,3 @@ try {
     //There was an error more information in $e->getMessage();
     echo "Something went wrong!";
 }
-
