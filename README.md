@@ -7,7 +7,7 @@ Chain-PHP
 
 This library provides a simple PHP interface to the [Chain Bitcoin API](https://chain.com/).
 
-[All methods](https://chain.com/docs) are supported including creating webhooks and events. You will need to [sign up to Chain](https://chain.com/) for a free API Key and Secret as they are needed to authenticate requests.
+[All methods](https://chain.com/docs) are supported including sending transactions and creating webhooks and webhook events. You will need to [sign up to Chain](https://chain.com/) for a free API Key and Key Secret as they are required to authenticate requests.
 
 ### Installing via Composer
 
@@ -29,7 +29,7 @@ require 'vendor/autoload.php';
 
 ### Setup
 
-You will need to provide your API Key ID and API Key Secret as provided by Chain to authenticate your requests. There is an optional third parameter, which if set to true will use the Bitcoin Testnet3 block chain.
+You will need to reference your API Key ID and API Key Secret as provided by Chain to authenticate your requests. There is an optional third parameter, which if set to true will use the Bitcoin Testnet3 block chain.
 It defaults to using the Bitcoin Mainnet if not specified or set to false.
 
     $chain = Chain::make($key, $secret, false);
@@ -42,7 +42,7 @@ Please see the [Chain documentation](https://chain.com/docs/v1/) for the various
 * [Bitcoin Transaction Object](https://chain.com/docs#bitcoin-address-transactions)
 * Output Object array
 * OP_RETURN Object.
-* [Webhook URL Object](https://chain.com/docs/v1/ruby/#object-webhooks)
+* [Webhook URL Object](https://chain.com/docs/#object-webhooks)
 
 ### Address
 
@@ -113,4 +113,4 @@ from the Chain API for running the unit tests.
 
 ### Contributions
 
-Patches, bug fixes, feature requests, and pull requests are welcome on the GitHub page for this project.
+Patches, bug fixes, feature requests, and pull requests are welcome.
