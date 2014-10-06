@@ -5,7 +5,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php';
 use Cbix\Chain;
 use Cbix\ChainWebhookException;
 
-$chain = Chain::webhook('key', 'secret', false);
+$webhook = Chain::webhook('key', 'secret');
 
 /*
  * Create Webhook URL
@@ -13,7 +13,7 @@ $chain = Chain::webhook('key', 'secret', false);
  */
 
 try {
-    $result = $chain->create_webhook('https://www.cbix.ca/webhook');
+    $result = $webhook->create_webhook('https://www.cbix.ca/webhook');
     // returns a Webhook URL Object (https://chain.com/docs#object-webhooks)
     var_dump($result);
 } catch (ChainWebhookException $e) {
@@ -27,7 +27,7 @@ try {
  */
 
 try {
-    $result = $chain->list_webhooks();
+    $result = $webhook->list_webhooks();
     // returns an array of Webhook URL Objects (https://chain.com/docs#object-webhooks)
     var_dump($result);
 } catch (ChainWebhookException $e) {
@@ -41,7 +41,7 @@ try {
  */
 
 try {
-    $result = $chain->update_webhook('e787d27b-f8ef-4e50-ba62-27d68736a561', 'https://www.cbix.ca/webhook/updated_url');
+    $result = $webhook->update_webhook('e787d27b-f8ef-4e50-ba62-27d68736a561', 'https://www.cbix.ca/webhook/updated_url');
     // returns a Webhook URL Object (https://chain.com/docs#object-webhooks)
     var_dump($result);
 } catch (ChainWebhookException $e) {
@@ -55,7 +55,7 @@ try {
  */
 
 try {
-    $result = $chain->delete_webhook('e787d27b-f8ef-4e50-ba62-27d68736a561');
+    $result = $webhook->delete_webhook('e787d27b-f8ef-4e50-ba62-27d68736a561');
     // returns a Webhook URL Object (https://chain.com/docs#object-webhooks)
     var_dump($result);
 } catch (ChainWebhookException $e) {
@@ -76,7 +76,7 @@ try {
         'confirmations' => 1
     ];
 
-    $result = $chain->create_webhook_event('9b012d63-8e11-42d6-8fa5-9fafabe468c6', $options);
+    $result = $webhook->create_webhook_event('9b012d63-8e11-42d6-8fa5-9fafabe468c6', $options);
     // returns a Webhook Event Object (https://chain.com/docs#object-webhooks-event)
     var_dump($result);
 } catch (ChainWebhookException $e) {
@@ -90,7 +90,7 @@ try {
  */
 
 try {
-    $result = $chain->list_webhook_events('9b012d63-8e11-42d6-8fa5-9fafabe468c6');
+    $result = $webhook->list_webhook_events('9b012d63-8e11-42d6-8fa5-9fafabe468c6');
     // returns an array of Webhook Event Objects (https://chain.com/docs#object-webhooks-event)
     var_dump($result);
 } catch (ChainWebhookException $e) {
@@ -104,7 +104,7 @@ try {
  */
 
 try {
-    $result = $chain->delete_webhook_event('9b012d63-8e11-42d6-8fa5-9fafabe468c6', 'address-transaction', '17x23dNjXJLzGMev6R63uyRhMWP1VHawKc');
+    $result = $webhook->delete_webhook_event('9b012d63-8e11-42d6-8fa5-9fafabe468c6', 'address-transaction', '17x23dNjXJLzGMev6R63uyRhMWP1VHawKc');
     // returns an array of Webhook Event Objects (https://chain.com/docs#object-webhooks-event)
     var_dump($result);
 } catch (ChainWebhookException $e) {
