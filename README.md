@@ -50,7 +50,7 @@ Further details are available in the examples included. Where the API accepts mu
 
     $single_address = $chain->get_address('17x23dNjXJLzGMev6R63uyRhMWP1VHawKc');
     $multiple_addresses = $chain->get_address(['17x23dNjXJLzGMev6R63uyRhMWP1VHawKc', '1EX1E9n3bPA1zGKDV5iHY2MnM7n5tDfnfH']);
-    $transactions = $chain->get_transactions('17x23dNjXJLzGMev6R63uyRhMWP1VHawKc');
+    $transactions = $chain->get_address_transactions('17x23dNjXJLzGMev6R63uyRhMWP1VHawKc');
     $unspents = $chain->get_address_unspents('17x23dNjXJLzGMev6R63uyRhMWP1VHawKc');
     $op_returns = $chain->get_address_op_returns('17x23dNjXJLzGMev6R63uyRhMWP1VHawKc');
 
@@ -61,6 +61,7 @@ In order to achieve this please consider using the [bitcoin-lib-php library](htt
 
     $transaction = $chain->get_transaction('0f40015ddbb8a05e26bbacfb70b6074daa1990b813ba9bc70b7ac5b0b6ee2c45');
     $op_return = $chain->get_transaction_op_return('0f40015ddbb8a05e26bbacfb70b6074daa1990b813ba9bc70b7ac5b0b6ee2c45');
+    $confidence = $chain->get_transaction_confidence('0f40015ddbb8a05e26bbacfb70b6074daa1990b813ba9bc70b7ac5b0b6ee2c45');
     $send = $chain->send_transaction('0100000001ec...');
 
 ### Block
