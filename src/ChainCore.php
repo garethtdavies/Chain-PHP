@@ -129,6 +129,22 @@ class ChainCore implements ChainInterface
     }
 
     /**
+     * @param $hash
+     * @return mixed
+     * @throws ChainException
+     */
+    public function get_transaction_confidence($hash)
+    {
+        try {
+            $response = $this->client->get("transactions/{$hash}/confidence");
+        } catch (RequestException $e) {
+            throw new ChainException($e->getResponse()->getbody());
+        }
+
+        return json_decode($response->getBody());
+    }
+
+    /**
      * @param $hex
      * @return mixed
      * @throws ChainException
