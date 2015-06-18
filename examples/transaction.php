@@ -36,6 +36,21 @@ try {
 }
 
 /*
+ * Get Bitcoin Transaction Confidence
+ * Returns the confidence values for the transaction (both network propagation levels and if any double spends have been detected)
+ * More: ( https://chain.com/docs#bitcoin-transaction-confidence )
+ */
+
+try {
+    $result = $chain->get_transaction_confidence('4a7d62a4a5cc912605c46c6a6ef6c4af451255a453e6cbf2b1022766c331f803');
+    // returns a OP_RETURN object
+    var_dump($result);
+} catch (ChainException $e) {
+    //There was an error more information in $e->getMessage();
+    echo "Something went wrong!";
+}
+
+/*
  * Send Bitcoin Transaction
  * Accepts a signed transaction in hex format and sends it to the Bitcoin network
  * You will need to create the signed transaction before sending to Chain using the bitcoin-lib-php library (https://github.com/Bit-Wasp/bitcoin-lib-php)
