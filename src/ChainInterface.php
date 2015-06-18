@@ -13,6 +13,8 @@ interface ChainInterface
     public function get_transaction($hash);
 
     public function get_transaction_op_return($hash);
+    
+    public function get_transaction_confidence($hash);
 
     public function send_transaction($hex);
 
